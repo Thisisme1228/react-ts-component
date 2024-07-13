@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from "./components/Button";
-import Alert from "./components/Alert";
 import Menu from "./components/Menu";
 import MenuItem from "./components/Menu/menuItem";
+import SubMenu from "./components/Menu/subMenu";
 
 function App() {
     return (
@@ -39,25 +39,29 @@ function App() {
                     alert(1)
                 }}>Hello</Button>
                 <hr/>
-                <Menu defaultIndex={2}>
-                    <MenuItem index={0}>
+                <Menu defaultIndex='2' mode='vertical'>
+                    <MenuItem>
                         one
                     </MenuItem>
-                    <MenuItem index={1}>
+                    <SubMenu title='dropdown'>
+                        <MenuItem>123</MenuItem>
+                        <MenuItem>234</MenuItem>
+                    </SubMenu>
+                    <MenuItem>
                         two
                     </MenuItem>
-                    <MenuItem index={2} disabled={true}>
+                    <MenuItem disabled={true}>
                         three
                     </MenuItem>
                 </Menu>
                 <Menu mode='vertical'>
-                    <MenuItem index={0} disabled={true}>
+                    <MenuItem disabled={true}>
                         one
                     </MenuItem>
-                    <MenuItem index={1}>
+                    <MenuItem>
                         two
                     </MenuItem>
-                    <MenuItem index={2}>
+                    <MenuItem>
                         three
                     </MenuItem>
                 </Menu>
