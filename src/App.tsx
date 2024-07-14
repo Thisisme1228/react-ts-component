@@ -3,8 +3,36 @@ import Button from "./components/Button";
 import Menu from "./components/Menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
+import Tabs from "./components/Tabs";
+import {TabsItemsProps} from "./components/Tabs/TabItem";
 
 function App() {
+    const items: TabsItemsProps[] = [
+        {
+            label: 'tab1',
+            children: <ul>
+                <ol>1</ol>
+                <ol>1</ol>
+                <ol>1</ol>
+                <ol>1</ol>
+                <ol>1</ol>
+                <ol>1</ol>
+                <ol>1</ol>
+                <ol>1</ol>
+                <ol>1</ol>
+                <ol>1</ol>
+            </ul>,
+        },
+        {
+            label: 'tab2',
+            children: 'this is tab2',
+            disabled: true,
+        },
+        {
+            label: 'tab3',
+            children: 'this is tab3',
+        }
+    ]
     return (
         <div className="App">
             <header className="App-header">
@@ -65,6 +93,9 @@ function App() {
                         three
                     </MenuItem>
                 </Menu>
+                <Tabs items={items} defaultActiveKey='2' mode='card' onSelect={(index) => {
+                    alert(index)
+                }}/>
             </header>
         </div>
     );
