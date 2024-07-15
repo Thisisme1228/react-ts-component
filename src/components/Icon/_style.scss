@@ -1,0 +1,6 @@
+//circulate theme color
+@each $key, $value in $theme-colors {
+  .icon-#{$key} {
+    color: $value;
+  }
+}

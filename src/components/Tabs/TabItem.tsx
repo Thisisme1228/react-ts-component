@@ -2,7 +2,7 @@ import React, {ReactNode} from "react";
 
 export interface BaseTabsItemsProps {
     index?: string;
-    label: string;
+    label: ReactNode;
     children?: ReactNode;
     disabled?: boolean;
 }
@@ -10,9 +10,9 @@ export interface BaseTabsItemsProps {
 export type TabsItemsProps = BaseTabsItemsProps & Partial<React.HTMLAttributes<HTMLElement>>
 
 const TabItem: React.FC<TabsItemsProps> = (props) => {
-    const {label, role, children} = props
+    const {role, children} = props
 
-    return <div className='tabs-content' key={label} role={role}>{children}</div>
+    return <div className='tabs-content' key={role} role={role}>{children}</div>
 }
 
 TabItem.displayName = "TabItem";

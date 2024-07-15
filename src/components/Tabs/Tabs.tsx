@@ -31,7 +31,6 @@ const Tabs: React.FC<TabsProps> = (props) => {
     const [currentIndex, setIndex] = useState(defaultActiveKey)
 
     const handleClick = (index: string) => {
-        console.log(typeof index)
         setIndex(index);
         if (onSelect) {
             onSelect(index)
@@ -51,8 +50,8 @@ const Tabs: React.FC<TabsProps> = (props) => {
     }
 
     const renderContent = () => {
-        return items.filter((item, index) => index.toString() === currentIndex).map(item => <TabItem
-            label={item.label} key={item.label} role='navContent'>{item.children}</TabItem>)
+        return items.filter((item, index) => index.toString() === currentIndex).map((item, index) => <TabItem
+            label={item.label} key={index} role='navContent'>{item.children}</TabItem>)
     }
     return <>
         <ul {...navProps}>

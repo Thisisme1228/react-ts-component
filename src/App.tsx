@@ -5,11 +5,13 @@ import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
 import Tabs from "./components/Tabs";
 import {TabsItemsProps} from "./components/Tabs/TabItem";
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import Icon from './components/Icon/Icon';
 
 function App() {
     const items: TabsItemsProps[] = [
         {
-            label: 'tab1',
+            label: <>tab1 <Icon icon={faChevronDown} className='icon-dark' size="1x"/></>,
             children: <ul>
                 <ol>1</ol>
                 <ol>1</ol>
@@ -82,10 +84,14 @@ function App() {
                         three
                     </MenuItem>
                 </Menu>
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <MenuItem disabled={true}>
                         one
                     </MenuItem>
+                    <SubMenu title='dropdown'>
+                        <MenuItem>123</MenuItem>
+                        <MenuItem>234</MenuItem>
+                    </SubMenu>
                     <MenuItem>
                         two
                     </MenuItem>
