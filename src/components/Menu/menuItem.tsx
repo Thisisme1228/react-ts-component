@@ -12,8 +12,14 @@ export interface BaseMenuItemProps {
 
 export type MenuItemProps = BaseMenuItemProps & Partial<React.HTMLAttributes<HTMLElement>>
 
-const MenuItem: React.FC<MenuItemProps> = (props) => {
-    const {index, disabled, className, style, children, ...restProps} = props;
+export const MenuItem: React.FC<MenuItemProps> = ({
+                                                      index,
+                                                      disabled,
+                                                      className,
+                                                      style,
+                                                      children,
+                                                      ...restProps
+                                                  }) => {
     const context = useContext(MenuContext);
     const classes = classNames('menu-item', className, {
         'is-disabled': disabled,

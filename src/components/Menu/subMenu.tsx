@@ -12,7 +12,7 @@ export interface SubMenuProps {
     children: React.ReactNode;
 }
 
-const SubMenu: React.FC<SubMenuProps> = ({index, title, className, children}) => {
+export const SubMenu: React.FC<SubMenuProps> = ({index, title, className, children}) => {
     const context = useContext(MenuContext)
     const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
     const isOpened = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false

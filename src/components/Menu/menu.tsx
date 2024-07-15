@@ -15,7 +15,7 @@ export interface BaseMenuProps {
     defaultOpenSubMenus?: string[],
 }
 
-interface IMenuContext {
+export interface IMenuContext {
     index: string;
     onSelect?: SelectCallback;
     mode?: MenuMode,
@@ -26,17 +26,16 @@ export const MenuContext = createContext<IMenuContext>({index: '0'})
 
 export type MenuProps = BaseMenuProps & Partial<React.HTMLAttributes<HTMLElement>>
 
-const Menu: React.FC<MenuProps> = (props) => {
-    const {
-        className,
-        mode = 'horizontal',
-        style,
-        defaultIndex = '0',
-        children,
-        onSelect,
-        defaultOpenSubMenus = [],
-        ...restProps
-    } = props;
+export const Menu: React.FC<MenuProps> = ({
+                                              className,
+                                              mode = 'horizontal',
+                                              style,
+                                              defaultIndex = '0',
+                                              children,
+                                              onSelect,
+                                              defaultOpenSubMenus = [],
+                                              ...restProps
+                                          }) => {
     const [currentActive, setActive] = useState(defaultIndex)
     const classes = classNames('menu', className, {
         'menu-vertical': mode === 'vertical',

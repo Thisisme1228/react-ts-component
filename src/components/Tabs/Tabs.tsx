@@ -17,8 +17,15 @@ export interface ITabsProps {
 
 export type TabsProps = ITabsProps & React.HTMLAttributes<HTMLElement>
 
-const Tabs: React.FC<TabsProps> = (props) => {
-    const {className, style, onSelect, defaultActiveKey = '0', mode = 'line', items = [], ...restProps} = props;
+export const Tabs: React.FC<TabsProps> = ({
+                                              className,
+                                              style,
+                                              onSelect,
+                                              defaultActiveKey = '0',
+                                              mode = 'line',
+                                              items = [],
+                                              ...restProps
+                                          }) => {
     const navClasses = classNames(className, 'tabs-nav', {
         'nav-line': mode === 'line',
         'nav-card': mode !== 'line',

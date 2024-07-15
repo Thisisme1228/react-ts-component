@@ -11,18 +11,16 @@ export interface BaseAlertProps {
     onClose?: () => void,
 }
 
-export type AlertProps = Partial<BaseAlertProps & React.HTMLAttributes<HTMLElement>>
+export type AlertProps = BaseAlertProps & Partial<React.HTMLAttributes<HTMLElement>>
 
-const Alert: React.FC<AlertProps> = (props) => {
-    const {
-        subject = 'default',
-        title,
-        content,
-        closeBtn = true,
-        onClose,
-        ...restProps
-    } = props
-
+export const Alert: React.FC<AlertProps> = ({
+                                                subject = 'default',
+                                                title,
+                                                content,
+                                                closeBtn = true,
+                                                onClose,
+                                                ...restProps
+                                            }) => {
     // alert, alert-success, alert-success, alert-danger, alert-warning
     const classes = classNames('alert', {
         [`alert-${subject}`]: subject,

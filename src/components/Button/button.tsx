@@ -5,28 +5,47 @@ export type ButtonSize = 'lg' | 'sm'
 
 export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
-interface BaseButtonProps {
+export interface BaseButtonProps {
+    /**
+     * Add custom class
+     */
     className?: string;
+    /**
+     * Whether disabled
+     */
     disabled?: boolean;
+    /**
+     * How large should the button be?
+     */
     size?: ButtonSize;
+    /**
+     * What button type to use
+     */
     btnType?: ButtonType;
+    /**
+     * Button contents
+     */
     children?: React.ReactNode;
-    href?: string
+    /**
+     * Whether is hyperlinked
+     */
+    href?: string,
 }
 
-type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
-type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
-export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
-const Button: React.FC<ButtonProps> = (props) => {
-    const {
-        btnType = 'default',
-        className,
-        disabled = false,
-        size,
-        children,
-        href,
-        ...restProps
-    } = props
+export type ButtonProps =
+    BaseButtonProps
+    & Partial<React.ButtonHTMLAttributes<HTMLElement> & React.AnchorHTMLAttributes<HTMLElement>>
+
+/** Button component for user interaction*/
+export const Button: React.FC<ButtonProps> = ({
+                                                  btnType = 'default',
+                                                  className,
+                                                  disabled = false,
+                                                  size,
+                                                  children,
+                                                  href,
+                                                  ...restProps
+                                              }) => {
     // btn, btn-lg, btn-primary
     const classes = classNames('btn', className, {
         [`btn-${btnType}`]: btnType,
