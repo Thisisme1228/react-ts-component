@@ -11,7 +11,7 @@ export interface BaseButtonProps {
      */
     className?: string;
     /**
-     * Whether disabled
+     * Whether disable Button
      */
     disabled?: boolean;
     /**
