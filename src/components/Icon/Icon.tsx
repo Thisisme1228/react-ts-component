@@ -6,6 +6,7 @@ export type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning
 
 export interface IconProps extends FontAwesomeIconProps {
     theme?: ThemeProps;
+    onClick?: (e:React.MouseEvent) => void;
 }
 
 const Icon: React.FC<IconProps> = (props) => {

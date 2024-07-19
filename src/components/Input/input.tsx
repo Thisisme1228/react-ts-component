@@ -1,4 +1,4 @@
-import React, {InputHTMLAttributes, ReactElement, FC, ChangeEvent, useState} from "react";
+import React, {InputHTMLAttributes, ReactElement, ChangeEvent, forwardRef} from "react";
 import classNames from "classnames";
 import {IconProp} from "@fortawesome/fontawesome-svg-core"
 import Icon from "../Icon/Icon";
@@ -32,16 +32,16 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
 /**
  * Input component for user interaction
  */
-export const Input: FC<InputProps> = ({
-                                          disabled = false,
-                                          size = 'sm',
-                                          icon,
-                                          prefixA,
-                                          suffix,
-                                          style,
-                                          role,
-                                          ...restprops
-                                      }) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>(({
+                                                                   disabled = false,
+                                                                   size = 'sm',
+                                                                   icon,
+                                                                   prefixA,
+                                                                   suffix,
+                                                                   style,
+                                                                   role,
+                                                                   ...restprops
+                                                               }, ref) => {
     //compute different className according to different attributes
     const cnames = classNames('helene-input-wrapper', {
         [`input-size-${size}`]: size,
@@ -69,12 +69,12 @@ export const Input: FC<InputProps> = ({
                 prefixA && <div className='helene-input-group-prepend'>{prefixA}</div>
             }
             {icon && <div className='icon-wrapper'><Icon icon={icon} title={`title-${icon}`}/></div>}
-            <input className='helene-input-inner' disabled={disabled} {...restprops}/>
+            <input className='helene-input-inner' disabled={disabled} {...restprops} ref={ref}/>
             {
                 suffix && <div className='helene-input-group-append'>{suffix}</div>
             }
         </div>
     )
-}
+})
 
 export default Input
