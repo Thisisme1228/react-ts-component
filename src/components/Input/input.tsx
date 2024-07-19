@@ -1,4 +1,4 @@
-import React, {InputHTMLAttributes, ReactElement, FC, ChangeEvent} from "react";
+import React, {InputHTMLAttributes, ReactElement, FC, ChangeEvent, useState} from "react";
 import classNames from "classnames";
 import {IconProp} from "@fortawesome/fontawesome-svg-core"
 import Icon from "../Icon/Icon";
@@ -50,6 +50,17 @@ export const Input: FC<InputProps> = ({
         'input-group-append': !!suffix,
         'input-group-prepend': !!prefixA
     })
+
+    const fixControlledValue = (value: any) => {
+        if (typeof value === 'undefined' || value === null) {
+            return ''
+        }
+        return value
+    }
+    if ('value' in restprops) {
+        delete restprops.defaultValue
+        restprops.value = fixControlledValue(restprops.value)
+    }
 
     return (
         //whether adding specific node according to the judgement of attributes
